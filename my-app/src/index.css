@@ -19,6 +19,10 @@ header{
     width: 25%;
 }
 
+.niewidzialny{
+    display: none;
+}
+
 .logo-image{
     height: 150px;
     margin-left: 25px;

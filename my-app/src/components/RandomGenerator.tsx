@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import names from '../assets/imiona.json';
 
 const RandomGenerator: React.FC = () => {
-  const [selectedName, setSelectedName] = useState<string | null>(null);
+  const [name, setName] = useState<string | null>(null);
   const [generateRandom, setGenerateRandom] = useState<(() => number) | null>(null);
 
+  // Ładowanie WebAssembly
   useEffect(() => {
     const loadWasm = async () => {
       const script = document.createElement('script');
@@ -27,23 +28,29 @@ const RandomGenerator: React.FC = () => {
     loadWasm();
   }, []);
 
-  
-const handleClick = () => {
-    if (generateRandom) {
-      const result = generateRandom(); // result is from 1 to 20
-      const index = result; 
-      const name = names[index] ?? 'Unknown';
-      setSelectedName(name);
-    }
-  };
+  useEffect(() => {
+  if (generateRandom) {
+    // Ustawiamy pierwsze imię
+    const initialIndex = generateRandom() % names.length;
+    setName(names[initialIndex]);
+
+    // Co 24h losujemy nowe imię
+    const interval = setInterval(() => {  
+    const newIndex = generateRandom() % names.length;
+      window.location.reload();
+      setName(names[newIndex]);
+    }, 86400000); // 24h
+
+    return () => clearInterval(interval);
+  }
+}, [generateRandom]);
+
 
   return (
-    <div>
-      <h1>{selectedName}</h1>
-      <button onClick={handleClick}>Generate Name</button>
+    <div> 
+      <p>{name}</p>
     </div>
   );
 };
-
 
 export default RandomGenerator;
