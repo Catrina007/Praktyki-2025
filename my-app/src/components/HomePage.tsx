@@ -19,13 +19,13 @@ return (
       <div>
         <header>
             <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
-            <section className="happy-worker-section"> <p>Szczęśliwy pracownik dnia: </p><RandomGenerator/></section>
+            <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator/></h3></section>
         </header>
          
             <nav>
              <ul>
                <li><Link to="/">Home</Link></li>
-               <li><Link to="/random-generator">Random Generator</Link></li>
+               <li><Link to="/toDo-List">To do list</Link></li>
                <li><a href="services.html">Services</a></li>
               <li><a href="contact.html">Contact</a></li>
              </ul>

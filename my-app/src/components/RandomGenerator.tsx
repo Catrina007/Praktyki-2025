@@ -29,26 +29,36 @@ const RandomGenerator: React.FC = () => {
   }, []);
 
   useEffect(() => {
-  if (generateRandom) {
-    // Ustawiamy pierwsze imię
-    const initialIndex = generateRandom() % names.length;
-    setName(names[initialIndex]);
+          const savedName = localStorage.getItem('name');
+          if (savedName) {
+              setName(JSON.parse(savedName));
+          }
+      }, []);
+  
+      useEffect(() => {
+        localStorage.setItem('name', JSON.stringify(name));
+      }, [name]);
 
-    // Co 24h losujemy nowe imię
-    const interval = setInterval(() => {  
-    const newIndex = generateRandom() % names.length;
-      window.location.reload();
-      setName(names[newIndex]);
-    }, 86400000); // 24h
+  useEffect(() => {
+  if (generateRandom && !name) { 
+    const initialIndex = generateRandom() % names.length;
+    const selectedName = names[initialIndex];
+    setName(selectedName);
+
+    const interval = setInterval(() => {
+      const newIndex = generateRandom() % names.length;
+      const newName = names[newIndex];
+      setName(newName);
+      window.location.reload(); 
+    }, 86400000); 
 
     return () => clearInterval(interval);
   }
-}, [generateRandom]);
-
+}, [generateRandom, name]);
 
   return (
-    <div> 
-      <p>{name}</p>
+    <div>
+      {name ? <p>{name}</p> : <p>Ładuję imię...</p>}
     </div>
   );
 };

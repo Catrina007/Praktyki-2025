@@ -1,0 +1,116 @@
+import photo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
+import RandomGenerator from './RandomGenerator';
+import React, { useEffect, useState } from 'react';
+
+
+const ToDo: React.FC = () => {
+    const [tasks, setTasks] = useState<string[]>([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const [doneTasks, setDoneTasks] = useState<string[]>([]);
+
+    const handleAddTask = () => setIsOpen(true);
+    const handleClose = () => setIsOpen(false);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
+
+    
+
+       useEffect(() => {
+        const savedTasks = localStorage.getItem('tasks');
+            if (savedTasks) {
+                setTasks(JSON.parse(savedTasks));
+            }
+        }, []);
+
+        useEffect(() => {
+          localStorage.setItem('tasks', JSON.stringify(tasks));
+        }, [tasks]);
+
+
+        const handleAdd = () => {
+          if (inputValue.trim() !== '') {
+            setTasks([...tasks, inputValue]);
+            setInputValue('');
+            setIsOpen(false); 
+          }
+        };
+
+        const handleDelBtn = (indexToDelete: number) => {
+            setTasks(tasks.filter((_, index) => index !== indexToDelete));
+        };
+        
+        const handleDoneBtn = (doneIndex: number) => {
+          const taskToMove = tasks[doneIndex];
+            setDoneTasks([...doneTasks, taskToMove]);
+            setTasks(tasks.filter((_, index) => index !== doneIndex));
+        };
+
+        const handleUndoBtn = (doneIndex: number) => {
+          const taskToMove = tasks[doneIndex];
+            setTasks([...tasks, taskToMove]);
+            setDoneTasks(doneTasks.filter((_, index) => index !== doneIndex));
+            setTasks([...tasks, inputValue]); //Nie działa przywracanie nazwy razem z całym zadaniem
+        };
+  
+
+    return (
+    <div> 
+       <header>
+            <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
+            <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator/> </h3></section>
+        </header>
+         
+            <nav>
+             <ul>
+               <li><Link to="/">Home</Link></li>
+               <li><Link to="/toDo-List">To do list</Link></li>
+               <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact</a></li>
+             </ul>
+            </nav>
+
+            <h1>To do list</h1>
+            <button id="addTaskBtn" onClick={handleAddTask}>Add Task</button>
+
+            <div className="inProgress">
+                <h2>To do:</h2>
+                
+                {isOpen && (
+                        <div className="task">
+                          <h4>Task name:</h4>
+                          <input type="text" value={inputValue} onChange={handleChange} /> <br/>
+                          <button className="delBtn" onClick={handleClose}>Close</button>
+                          <button className="delBtn" onClick={handleAdd}>Add</button>
+                        </div>
+                      )}
+
+                {tasks.map((task, index) => (
+                  <div className="task" key={index}>
+                    <p>{task}</p>
+                    <button className="delBtn" onClick={() => handleDelBtn(index)}>Delete</button>
+                    <button className="editBtn">Edit</button>
+                    <button className="doneBtn" onClick={() => handleDoneBtn(index)}>Done</button>
+                  </div>
+                ))}
+
+            </div>
+            <div className="done">
+                <h2>Done:</h2>
+                {doneTasks.map((task, index) => (
+                  <div className="task" key={index}>
+                    <p>{task}</p>
+                    <button className="doneBtn" onClick={() => handleUndoBtn(index)}>Undo</button>
+                  </div>
+                ))}
+            </div>
+            <div className="stats">
+                
+            </div> 
+            
+            
+    </div>
+  );
+};
+
+export default ToDo;
