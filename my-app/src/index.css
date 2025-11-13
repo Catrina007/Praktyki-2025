@@ -58,9 +58,8 @@ h3{
 }
 
 main{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    width: 70%;
+    margin: auto;
 }
 
 .main-section{

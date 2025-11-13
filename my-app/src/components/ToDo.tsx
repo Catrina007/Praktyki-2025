@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 
 const ToDo: React.FC = () => {
+
     const [tasks, setTasks] = useState<string[]>([]);
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
@@ -28,14 +29,15 @@ const ToDo: React.FC = () => {
           localStorage.setItem('tasks', JSON.stringify(tasks));
         }, [tasks]);
 
-
+ 
         const handleAdd = () => {
           if (inputValue.trim() !== '') {
-            setTasks([...tasks, inputValue]);
+             setTasks([...tasks, inputValue]);
             setInputValue('');
-            setIsOpen(false); 
+            setIsOpen(false);
           }
         };
+
 
         const handleDelBtn = (indexToDelete: number) => {
             setTasks(tasks.filter((_, index) => index !== indexToDelete));
@@ -94,12 +96,19 @@ const ToDo: React.FC = () => {
               <li><a href="contact.html">Contact</a></li>
              </ul>
             </nav>
-
+            
+            <main>
             <h1>To do list</h1>
             <button id="addTaskBtn" onClick={handleAddTask}>Add Task</button>
 
             <div className="inProgress">
                 <h2>To do:</h2>
+                {/* <label htmlFor="sortTasks">Sort by:</label>
+                <select id="sortTasks" name='SortTasks'>
+                  <option value="newest">newest</option>
+                  <option value="oldest">oldest</option>
+                  <option value="priority">priority</option>
+                </select> */}
                 
                 {isOpen && (
                         <div className="task">
@@ -139,11 +148,8 @@ const ToDo: React.FC = () => {
                   </div>
                 ))}
             </div>
-            <div className="stats">
-                
-            </div> 
-            
-            
+  
+          </main>
     </div>
   );
 };
