@@ -171,6 +171,50 @@ th, td{
     background-color: #bbbbfa70;
 }
 
+.koszulki-form {
+    margin: auto;
+    /* display: flex; */
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.koszulki-form form{
+    width: 50%;
+}
+
+.koszulki-form p{
+    width: 50%;
+    padding-left: 20px;
+}
+
+.koszulki-form input[type="text"],
+.koszulki-form input[type="number"],
+.koszulki-form select,
+.koszulki-form input[type="email"] {
+    width: 35%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.koszulki-form input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #4646CC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.koszulki-form input[type="submit"]:hover {
+    background-color: #3333ff;
+}
+
 footer{
     height: auto;
     text-align: right;

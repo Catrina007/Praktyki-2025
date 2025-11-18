@@ -5,6 +5,7 @@ import RandomGenerator from './components/RandomGenerator';
 import GamePage from './components/GamePage';
 import XO from './components/XO';
 import Expenses from './components/Expences';
+import Tshirts from './components/Tshirts';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
         <Route path="/game" element={<GamePage />} />
         <Route path="/XO" element={<XO />} />
         <Route path="/expenses" element={<Expenses />} />
+        <Route path="/t-shirts" element={<Tshirts />} />
       </Routes>
     </Router>
   );

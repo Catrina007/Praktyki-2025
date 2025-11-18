@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
     let i: number;
     let slides = document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>;
     let dots = document.getElementsByClassName("dot") as HTMLCollectionOf<HTMLElement>;
-    if(slides.length === 0 || dots.length === 0) return;
+    if (slides.length === 0 || dots.length === 0) return;
     if (n > slides.length) {
       slideIndex.current = 1;
     }
@@ -63,6 +63,7 @@ const HomePage: React.FC = () => {
             <li><Link to="/game">Games reservation</Link></li>
             <li><Link to="/XO">XO Game</Link></li>
             <li><Link to="/expenses">Expenses Tracker</Link></li>
+            <li><Link to="/t-shirts">Koszulki firmowe</Link></li>
 
           </ul>
         </nav>

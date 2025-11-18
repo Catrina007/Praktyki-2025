@@ -86,6 +86,7 @@ const GamePage: React.FC = () => {
             <li><Link to="/game">Games reservation</Link></li>
             <li><Link to="/XO">XO Game</Link></li>
             <li><Link to="/expenses">Expenses Tracker</Link></li>
+            <li><Link to="/t-shirts">Koszulki firmowe</Link></li>
 
 
           </ul>
