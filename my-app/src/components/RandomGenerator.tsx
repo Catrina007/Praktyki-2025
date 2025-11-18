@@ -41,7 +41,6 @@ const RandomGenerator: React.FC<RandomGeneratorProps> = ({ intervalMs = 86400000
       const elapsedSec = Math.floor(elapsedMs / 1000);
       const elapsedMin = Math.floor(elapsedSec / 60);
       const elapsedHours = Math.floor(elapsedMin / 60);
-      console.log(`Minęło: ${elapsedHours}h ${elapsedMin % 60}m ${elapsedSec % 60}s od ostatniego losowania`);
     }, 5000); // co 5 sekund (debug)
 
     return () => clearInterval(logInterval);

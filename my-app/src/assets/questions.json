@@ -32,7 +32,7 @@
     {
         "question": "Ile najwięcej lad 1500 miał Sitek?",
         "options": ["5", "3", "4", "Nigdy nie miał lady 1500"],
-        "answer": "T3"
+        "answer": "3"
     },
     {
         "question": "Kim jest Sitek w firmie?",
@@ -50,7 +50,7 @@
         "answer": "Lena"
     },
     {
-        "question": "Jakie ma zwirzaki?",
+        "question": "Jakie ma zwierzaki?",
         "options": ["cztery czarne psy", "dwa rude koty", "zielony gekon", "dwa żółte kanarki"],
         "answer": "dwa rude koty"
     },
