@@ -93,7 +93,7 @@ const ToDo: React.FC = () => {
                <li><Link to="/">Home</Link></li>
                <li><Link to="/toDo-List">To do list</Link></li>
                <li><a href="services.html">Services</a></li>
-              <li><a href="contact.html">Contact</a></li>
+               <li><a href="/Quiz">Quiz</a></li>
              </ul>
             </nav>
             
