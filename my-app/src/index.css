@@ -63,7 +63,7 @@ main{
 }
 
 .main-section{
-    /* width: 70%;
+    width: 70%;
     height: auto;
 }
 
@@ -175,7 +175,7 @@ th, td{
 
 .koszulki-form {
     margin: auto;
-    /* display: flex; */
+    display: flex;
     margin-bottom: 20px;
     margin-top: 20px;
 }
