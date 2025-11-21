@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -34,6 +33,7 @@ header{
     font-size: 20px;
     background-color: #4646CC;
     height: 60px;
+    cursor: pointer;
 } 
 
 .links {
@@ -63,7 +63,7 @@ main{
 }
 
 .main-section{
-    width: 70%;
+    /* width: 70%;
     height: auto;
 }
 
@@ -78,9 +78,155 @@ main{
     margin-bottom: 20px;
 }
 
+.button-section{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-section button{
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: white;
+    border: 2px solid #4646CC;
+    border-radius: 5px;
+}
+
+.button-section button:hover{
+    background-color: #4646CC;
+    color: white;
+}
+
+table{
+    width: 80%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+th, td{
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.game{
+    padding: 20px;
+    margin:20px;
+    height: auto;
+}
+.game-board{
+    height: auto;
+    width: auto;
+    border: 2px solid black;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.board-row{
+    display: flex;
+}
+
+.winner{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.board-row button{
+    height: 120px;
+}
+
+.square{
+    width: 120px;
+    height: 120px;
+    background-color: #ffffff;
+    border: 0.5px solid #000000;
+    font-size: 48px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.expenses-table table{
+    margin-top: 20px;
+    width: 80%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.expenses-table th, .expenses-table td{
+    border: none;
+    padding: 10px;
+    text-align: center;
+}
+
+.expenses-table th{
+    background-color: #4646CC;
+    color: white;
+}
+
+.expenses-table tr:nth-child(even){
+    background-color: #bbbbfa70;
+}
+
+.koszulki-form {
+    margin: auto;
+    /* display: flex; */
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.koszulki-form form{
+    width: 50%;
+}
+
+.koszulki-form p{
+    width: 50%;
+    padding-left: 20px;
+}
+
+.koszulki-form input[type="text"],
+.koszulki-form input[type="number"],
+.koszulki-form select,
+.koszulki-form input[type="email"] {
+    width: 35%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.koszulki-form input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #4646CC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.koszulki-form input[type="submit"]:hover {
+    background-color: #3333ff;
+}
+
 footer{
     height: auto;
     text-align: right;
+    padding-right: 20px;
+    font-weight: bold;
+    background-color: #4646CC;
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 20px;
 }
 
 
