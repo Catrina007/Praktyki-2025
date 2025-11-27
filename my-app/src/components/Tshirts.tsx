@@ -50,14 +50,10 @@ const Tshirts: React.FC = () => {
         }
     }, []);
 
-
-
-
-
     return (
         <>
             <Helmet>
-                <title>Home Page - SpyroNet</title>
+                <title>Compan T-shirts - SpyroNet</title>
                 <link rel="stylesheet" href="style.css" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -73,18 +69,19 @@ const Tshirts: React.FC = () => {
                 <nav>
                     <ul className='nav-links'>
                         <li className='links'><Link to="/">Home</Link></li>
-                        <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
-                        <li className='links'><Link to="/Quiz">Quiz</Link></li>
-                        <li className='links'><Link to="/game">Games reservation</Link></li>
-                        <li className='links'><Link to="/XO">XO Game</Link></li>
-                        <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
-                        <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
+                                    <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
+                                    <li className='links'><Link to="/Quiz">Quiz</Link></li>
+                                    <li className='links'><Link to="/game">Board Games List</Link></li>
+                                    <li className='links'><Link to="/XO">XO Game</Link></li>
+                                    <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
+                                    <li className='links'><Link to="/t-shirts">Company T-shirts</Link></li>
+                                    <li className='links'><Link to="/led">LED</Link></li>
                     </ul>
                 </nav>
 
                 <main>
 
-                    <section className="koszulki-form">
+                    <section className="koszulki-form main-section">
                         <form onSubmit={handleSubmit}>
                             <input type="text" name="imie" id="imie" placeholder="Podaj imie..." value={name} onChange={handleChangeName} required /><br />
                             <input type="text" name="nazwisko" id="nazwisko" placeholder="Podaj nazwisko..." value={surname} onChange={handleChangeSurname} required /><br />
@@ -101,12 +98,6 @@ const Tshirts: React.FC = () => {
                             </select><br />
                             <input type="submit" id="zamow" value="Zamów" />
                         </form>
-                        Current name: {name} <br />
-                        Current surname: {surname}<br />
-                        Current email: {email} <br />
-                        Current numer: {number} <br />
-                        Current size: {size}
-                        <pre>{JSON.stringify(formData, null, 2)}</pre>
                     </section>
                 </main>
                 <footer>by Katarzyna Dabrowska & Kaja Wojcik</footer>

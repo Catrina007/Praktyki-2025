@@ -1,5 +1,6 @@
-import photo from '../assets/logo.png';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import photo from '../assets/logo.png';
 import RandomGenerator from './RandomGenerator';
 import React, { useState } from 'react';
 import questions from '../assets/questions.json';
@@ -48,50 +49,64 @@ const Quiz: React.FC = () => {
 
 
   return (
-    <div>
-      <header>
-        <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
-        <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator /> </h3></section>
-      </header>
+    <>
+      <Helmet>
+        <title>Quiz - SpyroNet</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" />
+      </Helmet>
 
-      <nav>
-        <ul className='nav-links'>
-          <li className='links'><Link to="/">Home</Link></li>
-          <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
-          <li className='links'><Link to="/Quiz">Quiz</Link></li>
-          <li className='links'><Link to="/game">Games reservation</Link></li>
-          <li className='links'><Link to="/XO">XO Game</Link></li>
-          <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
-          <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
-        </ul>
-      </nav>
+        <header>
+          <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
+          <section className="happy-worker-section"><p>Happy worker of the day: </p><RandomGenerator /></section>
+        </header>
 
-      {!finished ? (
-        <div className='quiz-container'>
-          <h2>{questions[currentQuestion].question}</h2>
-          <ul className='options-list'>
-            {questions[currentQuestion].options.map((opt) => (
-              <li className='option' key={opt}>
-                <label>
-                  <input
-                    className='checkbox'
-                    type="checkbox"
-                    checked={selected.includes(opt)}
-                    onChange={() => toggleAnswer(opt)}
-                  />
-                  <span>{opt}</span>
-                </label>
-              </li>
-            ))}
+        <nav>
+          <ul className='nav-links'>
+            <li className='links'><Link to="/">Home</Link></li>
+            <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
+            <li className='links'><Link to="/Quiz">Quiz</Link></li>
+            <li className='links'><Link to="/game">Board Games List</Link></li>
+            <li className='links'><Link to="/XO">XO Game</Link></li>
+            <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
+            <li className='links'><Link to="/t-shirts">Company T-shirts</Link></li>
+            <li className='links'><Link to="/led">LED</Link></li>
           </ul>
+        </nav>
 
-          <button className='nextQuestion' onClick={checkAnswer}>Zatwierdź odpowiedź</button>
-        </div>
-      ) : (
-        <h2>Twój wynik: {score} / {questions.length}</h2>
-      )}
-    </div>
-  );
+        <main>
+          <section className="main-section">
+            {!finished ? (
+              <div className='quiz-container'>
+                <h2>{questions[currentQuestion].question}</h2>
+                <ul className='options-list'>
+                  {questions[currentQuestion].options.map((opt) => (
+                    <li className='option' key={opt}>
+                      <label>
+                        <input
+                          className='checkbox'
+                          type="checkbox"
+                          checked={selected.includes(opt)}
+                          onChange={() => toggleAnswer(opt)}
+                        />
+                        <span>{opt}</span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+
+                <button className='nextQuestion' onClick={checkAnswer}>Zatwierdź odpowiedź</button>
+              </div>
+            ) : (
+              <h2 style={{ marginTop: '20px' }}>Twój wynik: {score} / {questions.length}</h2>
+            )}
+
+          </section>
+        </main>
+      </>
+      );
 };
 
-export default Quiz;
+      export default Quiz;

@@ -88,14 +88,13 @@ const GamePage: React.FC = () => {
             <li className='links'><Link to="/XO">XO Game</Link></li>
             <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
             <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
+            <li className='links'><Link to="/led">LED</Link></li>
           </ul>
         </nav>
 
         <main>
           <section className="main-section">
-            <h1>Game Reservation</h1>
-            <p>Here you can reserve boardgames</p>
-            <br />
+            <h1>Board games list</h1>
 
             <section className="button-section">
               <button id="byId">by ID</button>
@@ -106,7 +105,7 @@ const GamePage: React.FC = () => {
               <button id="byNumberOfGamers">by number of players</button>
             </section>
 
-            <table>
+            <table className='game-table'>
               <thead>
                 <tr>
                   <th>Title</th>

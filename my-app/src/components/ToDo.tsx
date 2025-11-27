@@ -1,5 +1,6 @@
-import photo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import photo from '../assets/logo.png';
 import RandomGenerator from './RandomGenerator';
 import React, { useEffect, useState } from 'react';
 
@@ -83,75 +84,81 @@ const ToDo: React.FC = () => {
 
   return (
     <div>
-      <header>
-        <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
-        <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator /> </h3></section>
-      </header>
+      <Helmet>
+        <title>To Do List - SpyroNet</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" />
+      </Helmet>
+      
+        <header>
+          <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
+          <section className="happy-worker-section"><p>Happy worker of the day: </p><RandomGenerator /></section>
+        </header>
 
       <nav>
         <ul className='nav-links'>
           <li className='links'><Link to="/">Home</Link></li>
           <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
           <li className='links'><Link to="/Quiz">Quiz</Link></li>
-          <li className='links'><Link to="/game">Games reservation</Link></li>
+          <li className='links'><Link to="/game">Board Games List</Link></li>
           <li className='links'><Link to="/XO">XO Game</Link></li>
           <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
-          <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
+          <li className='links'><Link to="/t-shirts">Company T-shirts</Link></li>
+          <li className='links'><Link to="/led">LED</Link></li>
         </ul>
       </nav>
 
       <main>
-        <h1>To do list</h1>
-        <button id="addTaskBtn" onClick={handleAddTask}>Add Task</button>
+        <section className="main-section">
+          <h1>To do list</h1>
+          <button id="addTaskBtn" onClick={handleAddTask}>Add Task</button>
 
-        <div className="inProgress">
-          <h2>To do:</h2>
-          {/* <label htmlFor="sortTasks">Sort by:</label>
-                <select id="sortTasks" name='SortTasks'>
-                  <option value="newest">newest</option>
-                  <option value="oldest">oldest</option>
-                  <option value="priority">priority</option>
-                </select> */}
+          <div className="inProgress">
+            <h2>To do:</h2>
 
-          {isOpen && (
-            <div className="task">
-              <h4>Task name:</h4>
-              <input type="text" value={inputValue} onChange={handleChange} /> <br />
-              <button className="delBtn" onClick={handleClose}>Close</button>
-              <button className="delBtn" onClick={handleAdd}>Add</button>
-            </div>
-          )}
+            {isOpen && (
+              <div className="task">
+                <h4>Task name:</h4>
+                <input type="text" value={inputValue} onChange={handleChange} /> <br />
+                <div>
+                  <button className="delBtn" onClick={handleClose}>Close</button>
+                  <button className="delBtn" onClick={handleAdd}>Add</button>
+                </div>
+              </div>
+            )}
 
-          {tasks.map((task, index) => (
-            <div className="task" key={index}>
-              {editIndex === index ? (
-                <>
-                  <input type="text" value={editValue} onChange={handleEditChange} />
-                  <button onClick={() => handleEditClose(index)}>Close</button>
-                  <button onClick={handleEditSave}>Change</button>
-                </>
-              ) : (
-                <>
-                  <p>{task}</p>
-                  <button className="delBtn" onClick={() => handleDelBtn(index)}>Delete</button>
-                  <button className="editBtn" onClick={() => handleEditBtn(index)} >Edit</button>
-                  <button className="doneBtn" onClick={() => handleDoneBtn(index)}>Done</button>
-                </>
-              )}
-            </div>
-          ))}
+            {tasks.map((task, index) => (
+              <div className="task" key={index}>
+                {editIndex === index ? (
+                  <>
+                    <input type="text" value={editValue} onChange={handleEditChange} /><br />
+                    <button className="delBtn" onClick={() => handleEditClose(index)}>Close</button>
+                    <button className="delBtn" onClick={handleEditSave}>Change</button>
+                  </>
+                ) : (
+                  <>
+                    <p>{task}</p>
+                    <button className="delBtn" onClick={() => handleDelBtn(index)}>Delete</button>
+                    <button className="editBtn" onClick={() => handleEditBtn(index)} >Edit</button>
+                    <button className="doneBtn" onClick={() => handleDoneBtn(index)}>Done</button>
+                  </>
+                )}
+              </div>
+            ))}
 
-        </div>
-        <div className="done">
-          <h2>Done:</h2>
-          {doneTasks.map((task, index) => (
-            <div className="task" key={index}>
-              <p>{task}</p>
-              <button className="doneBtn" onClick={() => handleUndoBtn(index)}>Undo</button>
-            </div>
-          ))}
-        </div>
-
+          </div>
+          <div className="done">
+            <h2>Done:</h2>
+            {doneTasks.map((task, index) => (
+              <div className="task" key={index}>
+                <p>{task}</p>
+                <button className="doneBtn" onClick={() => handleUndoBtn(index)}>Undo</button>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );

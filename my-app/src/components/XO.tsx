@@ -116,7 +116,7 @@ const XO: React.FC = () => {
     return (
         <>
             <Helmet>
-                <title>Game Page - SpyroNet</title>
+                <title>XO - SpyroNet</title>
                 <link rel="stylesheet" href="style.css" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -132,28 +132,19 @@ const XO: React.FC = () => {
                 <nav>
                     <ul className='nav-links'>
                         <li className='links'><Link to="/">Home</Link></li>
-                        <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
-                        <li className='links'><Link to="/Quiz">Quiz</Link></li>
-                        <li className='links'><Link to="/game">Games reservation</Link></li>
-                        <li className='links'><Link to="/XO">XO Game</Link></li>
-                        <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
-                        <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
+                                    <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
+                                    <li className='links'><Link to="/Quiz">Quiz</Link></li>
+                                    <li className='links'><Link to="/game">Board Games List</Link></li>
+                                    <li className='links'><Link to="/XO">XO Game</Link></li>
+                                    <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
+                                    <li className='links'><Link to="/t-shirts">Company T-shirts</Link></li>
+                                    <li className='links'><Link to="/led">LED</Link></li>
                     </ul>
                 </nav>
 
                 <main>
                     <section style={MainInlineStyle} className="main-section">
-                        {/* <div style={GamePartsInlineStyles}>
-                            <Game />
-                            <Game />
-                        </div>
-                        <div style={GamePartsInlineStyles}>
-                            <Game />
-                            <Game />
-                        </div> */}
                         <Game />
-
-
                     </section>
                 </main>
                 <footer></footer>

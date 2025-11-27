@@ -61,10 +61,10 @@ const HomePage: React.FC = () => {
             <li className='links'><Link to="/">Home</Link></li>
             <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
             <li className='links'><Link to="/Quiz">Quiz</Link></li>
-            <li className='links'><Link to="/game">Games reservation</Link></li>
+            <li className='links'><Link to="/game">Board Games List</Link></li>
             <li className='links'><Link to="/XO">XO Game</Link></li>
             <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
-            <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
+            <li className='links'><Link to="/t-shirts">Company T-shirts</Link></li>
             <li className='links'><Link to="/led">LED</Link></li>
           </ul>
         </nav>
@@ -76,17 +76,14 @@ const HomePage: React.FC = () => {
               <div className="mySlides fade">
                 <div className="numbertext">1 / 3</div>
                 <img src="https://itwiz.pl/wp-content/uploads/2022/03/spyrosoft-gielda.jpg" />
-                <div className="text">Caption Text</div>
               </div>
               <div className="mySlides fade">
                 <div className="numbertext">1 / 3</div>
-                <img src="https://itwiz.pl/wp-content/uploads/2022/03/spyrosoft-gielda.jpg" />
-                <div className="text">Caption Text</div>
+                <img src="https://spyro-soft.com/wp-content/uploads/2021/03/DSC7480.jpg" />
               </div>
               <div className="mySlides fade">
                 <div className="numbertext">1 / 3</div>
-                <img src="https://itwiz.pl/wp-content/uploads/2022/03/spyrosoft-gielda.jpg" />
-                <div className="text">Caption Text</div>
+                <img src="https://itwiz.pl/wp-content/uploads/2022/11/logo-spyrosoft-780x405.jpg" />
               </div>
               <a className="prev" onClick={() => plusSlides(-1)}>&#10094;</a>
               <a className="next" onClick={() => plusSlides(1)}>&#10095;</a>
@@ -97,15 +94,6 @@ const HomePage: React.FC = () => {
               <span className="dot" onClick={() => currentSlide(3)}></span>
             </div>
           </section>
-
-          {/* <section classNameName="main-section">
-            <h1>Welcome to SpyroNet</h1>
-            <img src="https://itwiz.pl/wp-content/uploads/2022/03/spyrosoft-gielda.jpg" alt="Description of image" />
-            <p>Your trusted partner in cybersecurity solutions. At Spyronet, we specialize in providing top-notch
-              services to protect your digital assets and ensure your online safety.</p>
-            <p>Explore our website to learn more about our offerings and how we can help you stay secure in the digital
-              world.</p>
-          </section> */}
         </main>
         <footer>by Katarzyna Dabrowska & Kaja Wojcik</footer>
       </div>
