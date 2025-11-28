@@ -1,0 +1,90 @@
+import React, { useState, useEffect } from 'react';
+const Form: React.FC = () => {
+    const [name, setName] = useState<string>("");
+    function handleChngeName(e: React.ChangeEvent<HTMLInputElement>) {
+        setName(e.target.value);
+    }
+
+    const [surname, setSurname] = useState<string>("");
+    function handleChangeSurname(e: React.ChangeEvent<HTMLInputElement>) {
+        setSurname(e.target.value);
+    }
+
+    const [phoneNumber, setPhoneNumber] = useState<string>("");
+    function handleChangePhoneNumber(e: React.ChangeEvent<HTMLInputElement>) {
+        setPhoneNumber(e.target.value);
+    }
+
+    const [email, setEmail] = useState<string>("");
+    function handleChangeEmail(e: React.ChangeEvent<HTMLInputElement>) {
+        setEmail(e.target.value);
+    }
+
+    const [paymentType, setPaymentType] = useState<string>("");
+    function handleChangePaymentType(e: React.ChangeEvent<HTMLSelectElement>) {
+        setPaymentType(e.target.value);
+    }
+
+    const [deliveryType, setDeliveryType] = useState<string>("");
+    function handleChangeDeliveryType(e: React.ChangeEvent<HTMLInputElement>) {
+        setDeliveryType(e.target.value);
+    }
+
+    const [formData, setFormData] = useState<any[]>([]);
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const newEntry = {
+            name: name,
+            surname: surname,
+            phoneNumber: phoneNumber,
+            email: email,
+            paymentType: paymentType,
+            deliveryType: deliveryType
+        };
+        setFormData([...formData, newEntry]);
+        localStorage.setItem("formData", JSON.stringify(formData));
+    }
+
+    useEffect(() => {
+        const saved = localStorage.getItem("formData");
+        if (saved) {
+            setFormData(JSON.parse(saved));
+        }
+    }, []);
+
+
+
+
+
+
+    return (
+        <>
+            <form onSubmit={handleSubmit}>
+                <input className='my-1 p-2 rounded bg-white text-dark border border-dark-subtle border-1' type="text" name="name" id="name" placeholder='Podaj imie...' value={name} onChange={handleChngeName} required />
+
+                <input className='my-1 p-2 rounded bg-white text-dark border border-dark-subtle border-1' type="text" name="surname" id="surname" placeholder='Podaj nazwisko...' value={surname} onChange={handleChangeSurname} required />
+
+                <input className='my-1 p-2 rounded bg-white text-dark border border-dark-subtle border-1' type="tel" name="phoneNumber" id="phoneNumber" placeholder='Podaj numer telefonu...' value={phoneNumber} onChange={handleChangePhoneNumber} required />
+
+                <input className='my-1 p-2 rounded bg-white text-dark border border-dark-subtle border-1' type="email" name="email" id="email" placeholder='Podaj adres email...' value={email} onChange={handleChangeEmail} required />
+
+                <select className='my-1 p-2 rounded bg-white text-dark border border-dark-subtle border-1' name="paymentType" id="paymentType" value={paymentType} onChange={handleChangePaymentType}>
+                    <option value="platnosc">Wybierz sposób płatności...</option>
+                    <option value="przelew">przelew</option>
+                    <option value="blik">blik</option>
+                    <option value="platnoscPrzyOdbiorze">platnosc przy odbiorze</option>
+                </select>
+
+                <input className='my-1 bg-white text-dark' type="radio" name="deliveryType" id="odbiorWlasny" value={deliveryType} onChange={handleChangeDeliveryType} required /> odbiór własny
+
+                <input className='my-1 bg-white text-dark' type="radio" name="deliveryType" id="paczkomat" value={deliveryType} onChange={handleChangeDeliveryType} required /> paczkomat
+
+                <input className='my-1 bg-white text-dark' type="radio" name="deliveryType" id="kurier" value={deliveryType} onChange={handleChangeDeliveryType} required /> kurier
+
+                <input className='my-1 py-2 px-4 rounded border-0 btn btn-primary' type="submit" id='zatwierdz' value="Zatwierdź" />
+            </form>
+            Current payment type: {paymentType}
+        </>
+    );
+};
+export default Form;
